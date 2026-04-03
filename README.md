@@ -10,12 +10,12 @@
 </p>
 
 <p align="center">
-  <a href="#-quick-start">Quick Start</a> ·
-  <a href="#-4-presets">Presets</a> ·
-  <a href="#-16-mbti-types">All Types</a> ·
-  <a href="#-custom-combos">Custom</a> ·
-  <a href="#-smart-recommend">Recommend</a> ·
-  <a href="#-中文说明">中文</a>
+  <a href="#quick-start">Quick Start</a> ·
+  <a href="#4-presets">Presets</a> ·
+  <a href="#16-mbti-types">All Types</a> ·
+  <a href="#custom-combos">Custom</a> ·
+  <a href="#smart-recommend">Recommend</a> ·
+  <a href="#中文说明">中文</a>
 </p>
 
 ---
@@ -311,10 +311,11 @@ Character illustrations from [16personalities.com](https://www.16personalities.c
 
 ---
 
-<h2 id="-中文说明">中文说明</h2>
+<h2 id="中文说明">中文说明</h2>
 
-<details>
-<summary><strong>点击展开中文版</strong></summary>
+<details open>
+<summary><strong>点击展开/收起中文版</strong></summary>
+<br/>
 
 ### 给你的 AI 编程搭档一个性格
 
