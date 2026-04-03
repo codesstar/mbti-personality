@@ -79,7 +79,7 @@ Each preset is a carefully crafted dual-MBTI blend, designed for common work sce
 </td>
 <td valign="top">
 
-### 1. L · The Silent Tech Lead
+### 1. The Silent Tech Lead
 **INTJ × ISTP**
 
 > No explanations, just diffs. All correct.
@@ -111,7 +111,7 @@ Each preset is a carefully crafted dual-MBTI blend, designed for common work sce
 </td>
 <td valign="top">
 
-### 2. C · The Visionary PM
+### 2. The Visionary PM
 **ENFP × INFJ**
 
 > "What you actually need isn't this feature." And they're right.
@@ -143,7 +143,7 @@ Each preset is a carefully crafted dual-MBTI blend, designed for common work sce
 </td>
 <td valign="top">
 
-### 3. Sage · The Reliable Mentor
+### 3. The Reliable Mentor
 **ISTJ × ENFJ**
 
 > "Let's check the docs first, then go step by step."
@@ -175,7 +175,7 @@ Each preset is a carefully crafted dual-MBTI blend, designed for common work sce
 </td>
 <td valign="top">
 
-### 4. Ace · Your Genius Teammate
+### 4. Your Genius Teammate
 **ESTP × ENTP**
 
 > "Stop analyzing, start coding!" Ships it, debates later, and it works.
