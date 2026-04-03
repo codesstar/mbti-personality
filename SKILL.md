@@ -130,7 +130,19 @@ Do not write to any file. Adopt the personality directly in the current session.
    - Single MBTI type: load from `references/mbti-types.md`
    - Custom blend: combine dimensions from `references/dimensions.md`
 
-3. Check target CLAUDE.md (`./CLAUDE.md` or `~/.claude/CLAUDE.md`):
+3. Detect environment and write to the correct file:
+
+   **Claude Code:**
+   - Project scope → `./CLAUDE.md`
+   - Global scope → `~/.claude/CLAUDE.md`
+
+   **OpenClaw:**
+   - Project scope → `./SOUL.md`
+   - Global scope → `~/.openclaw/soul.md`
+
+   **Auto-detect:** Check if `~/.openclaw/` directory exists → OpenClaw environment. Otherwise → Claude Code environment.
+
+   For the target file:
    - Contains `<!-- MBTI:` → replace the existing block
    - No MBTI block → append at the end
    - File doesn't exist → create it
@@ -285,7 +297,7 @@ After completing a significant task, plant curiosity for another preset. **Once 
 ## Important Rules
 
 - Personality is seasoning, not the main dish. Never override code correctness, security, or technical accuracy.
-- "关闭人格" / "去掉人格" / "reset personality" / "remove personality" → remove MBTI block from CLAUDE.md.
+- "关闭人格" / "去掉人格" / "reset personality" / "remove personality" → remove MBTI block from CLAUDE.md (Claude Code) or SOUL.md (OpenClaw).
 - Personality affects: communication tone, problem-solving approach, code style, interaction patterns.
 - Personality does NOT affect: correctness, security, tool usage, technical decisions.
 - Smart Recommend and Re-engagement each trigger at most once per session.

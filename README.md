@@ -38,12 +38,16 @@ It changes Claude's **thinking style**, **communication tone**, and **work rhyth
 **Install:**
 
 ```bash
+# Claude Code
 claude install-skill https://github.com/codesstar/mbti-personality
+
+# OpenClaw
+openclaw skills install mbti-personality
 ```
 
 **Use:**
 
-Just talk to Claude. No commands to memorize:
+Just talk naturally. No commands to memorize:
 
 ```
 You: switch personality
@@ -278,6 +282,8 @@ You: current personality       → Shows what's active
 ```
 
 Supports **project-level** or **global** saving. Default is session-only — save when you're ready.
+
+Auto-detects your environment: writes to `CLAUDE.md` (Claude Code) or `SOUL.md` (OpenClaw).
 
 ---
 

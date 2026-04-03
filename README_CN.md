@@ -38,12 +38,16 @@
 **安装：**
 
 ```bash
+# Claude Code
 claude install-skill https://github.com/codesstar/mbti-personality
+
+# OpenClaw
+openclaw skills install mbti-personality
 ```
 
 **使用：**
 
-跟 Claude 说就行，不需要记命令：
+跟 AI 说就行，不需要记命令：
 
 ```
 你：切换人格
@@ -278,6 +282,8 @@ claude install-skill https://github.com/codesstar/mbti-personality
 ```
 
 支持按**项目**或**全局**保存。默认仅当前对话生效，想保留时再说。
+
+自动检测环境：Claude Code 写入 `CLAUDE.md`，OpenClaw 写入 `SOUL.md`。
 
 ---
 
