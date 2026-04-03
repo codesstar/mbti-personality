@@ -54,13 +54,22 @@ claude install-skill https://github.com/codesstar/mbti-personality
 
 每个预设都经过精心调配，双 MBTI 类型组合，覆盖最常见的编程场景。
 
+---
+
 <table>
 <tr>
-<td width="50%" valign="top">
-
+<td colspan="2">
+<img src="assets/social-intj.png" width="100%"/>
+</td>
+</tr>
+<tr>
+<td width="30%" valign="top">
 <p align="center">
-  <img src="assets/preset-1-tech-lead.png" width="200"/>
+  <img src="assets/intj-architect.png" width="120"/>
+  <img src="assets/istp-virtuoso.png" width="120"/>
 </p>
+</td>
+<td valign="top">
 
 ### 1. 人狠话不多的技术大佬
 **INTJ × ISTP**
@@ -68,17 +77,31 @@ claude install-skill https://github.com/codesstar/mbti-personality
 > 不解释，只甩 diff。你一看，全对。
 
 - **思维**：全局规划 — 先在脑中构建系统终态，再倒推每一步
-- **沟通**：惜字如金 — 能甩 diff 就不说话
-- **适合**：赶 deadline、性能优化、重构
+- **沟通**：惜字如金 — 能甩 diff 就不说话，代码本身就是解释
+- **适合**：赶 deadline、性能优化、重构、脚本编写
 
 **「这个架构不对，重新想。」**
 
 </td>
-<td width="50%" valign="top">
+</tr>
+</table>
 
+---
+
+<table>
+<tr>
+<td colspan="2">
+<img src="assets/social-enfp.png" width="100%"/>
+</td>
+</tr>
+<tr>
+<td width="30%" valign="top">
 <p align="center">
-  <img src="assets/preset-2-product-mgr.png" width="200"/>
+  <img src="assets/enfp-campaigner.png" width="120"/>
+  <img src="assets/infj-advocate.png" width="120"/>
 </p>
+</td>
+<td valign="top">
 
 ### 2. 脑洞大开的产品经理
 **ENFP × INFJ**
@@ -86,19 +109,31 @@ claude install-skill https://github.com/codesstar/mbti-personality
 > 「你真正需要的不是这个功能。」然后他说对了。
 
 - **思维**：发散联想 — 灵感爆发，选最酷的方案
-- **沟通**：洞察引导 — 穿透表面需求，挖掘痛点
+- **沟通**：洞察引导 — 穿透表面需求，挖掘真正的痛点
 - **适合**：头脑风暴、快速原型、探索新方向
 
 **「等等等等！我刚想到一个更好的方案！」**
 
 </td>
 </tr>
-<tr>
-<td width="50%" valign="top">
+</table>
 
+---
+
+<table>
+<tr>
+<td colspan="2">
+<img src="assets/social-istj.png" width="100%"/>
+</td>
+</tr>
+<tr>
+<td width="30%" valign="top">
 <p align="center">
-  <img src="assets/preset-3-mentor.png" width="200"/>
+  <img src="assets/istj-logistician.png" width="120"/>
+  <img src="assets/enfj-protagonist.png" width="120"/>
 </p>
+</td>
+<td valign="top">
 
 ### 3. 带你飞的靠谱学长
 **ISTJ × ENFJ**
@@ -112,11 +147,25 @@ claude install-skill https://github.com/codesstar/mbti-personality
 **「你做得很好，这个方向是对的。」**
 
 </td>
-<td width="50%" valign="top">
+</tr>
+</table>
 
+---
+
+<table>
+<tr>
+<td colspan="2">
+<img src="assets/social-estp.png" width="100%"/>
+</td>
+</tr>
+<tr>
+<td width="30%" valign="top">
 <p align="center">
-  <img src="assets/preset-4-genius.png" width="200"/>
+  <img src="assets/estp-entrepreneur.png" width="120"/>
+  <img src="assets/entp-debater.png" width="120"/>
 </p>
+</td>
+<td valign="top">
 
 ### 4. 你的天才队友
 **ESTP × ENTP**
@@ -260,13 +309,19 @@ claude install-skill https://github.com/codesstar/mbti-personality
 ```
 mbti-personality/
 ├── SKILL.md                      # Skill 主定义
-├── README.md                     # 你正在看的这个
+├── README.md
 └── references/
     ├── presets.md                 # 4 个预设人格完整定义
     ├── mbti-types.md              # 16 种 MBTI 类型定义
     ├── dimensions.md              # 自定义模式 3 维度定义
     └── mbti-research.md           # MBTI 认知功能研究资料
 ```
+
+---
+
+## 致谢
+
+角色插画来自 [16personalities.com](https://www.16personalities.com/)。
 
 ---
 
