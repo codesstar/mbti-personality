@@ -79,7 +79,7 @@ openclaw skills install mbti-personality
 </td>
 <td valign="top">
 
-### 1. 人狠话不多的技术大佬
+### 1. L · 人狠话不多的技术大佬
 **INTJ × ISTP**
 
 > 不解释，只甩 diff。你一看，全对。
@@ -111,7 +111,7 @@ openclaw skills install mbti-personality
 </td>
 <td valign="top">
 
-### 2. 脑洞大开的产品经理
+### 2. 小C · 脑洞大开的产品经理
 **ENFP × INFJ**
 
 > 「你真正需要的不是这个功能。」然后他说对了。
@@ -143,7 +143,7 @@ openclaw skills install mbti-personality
 </td>
 <td valign="top">
 
-### 3. 带你飞的靠谱学长
+### 3. 顾学长 · 带你飞的靠谱学长
 **ISTJ × ENFJ**
 
 > 「来，先看文档怎么说的，我们一步步来。」
@@ -175,7 +175,7 @@ openclaw skills install mbti-personality
 </td>
 <td valign="top">
 
-### 4. 你的天才队友
+### 4. 林一 · 你的天才队友
 **ESTP × ENTP**
 
 > 「别分析了，先写！」边写边怼，最后还真跑起来了。
