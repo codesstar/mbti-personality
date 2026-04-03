@@ -56,7 +56,7 @@ You: change personality
 
 ## 4 Presets
 
-Each preset is a carefully crafted dual-MBTI blend, designed for common coding scenarios.
+Each preset is a carefully crafted dual-MBTI blend, designed for common work scenarios.
 
 ---
 

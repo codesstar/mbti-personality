@@ -56,7 +56,7 @@ claude install-skill https://github.com/codesstar/mbti-personality
 
 ## 4 个预设人格
 
-每个预设都经过精心调配，双 MBTI 类型组合，覆盖最常见的编程场景。
+每个预设都经过精心调配，双 MBTI 类型组合，覆盖最常见的工作场景。
 
 ---
 
