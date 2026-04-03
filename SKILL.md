@@ -156,8 +156,8 @@ First, show an activation card:
 ```
 ╔══════════════════════════════════════════╗
 ║                                          ║
-║   {TYPE} · {昵称}                         ║
-║   ◆ 人格切换完成                           ║
+║   你的{昵称}已上线                         ║
+║   {TYPE}                                 ║
 ║                                          ║
 ║   「{signature phrase}」                   ║
 ║                                          ║
@@ -168,8 +168,8 @@ First, show an activation card:
 ```
 ╔══════════════════════════════════════════╗
 ║                                          ║
-║   {TYPE} · {Nickname}                    ║
-║   ◆ Personality Activated                ║
+║   Your {Nickname} is online              ║
+║   {TYPE}                                 ║
 ║                                          ║
 ║   "{signature phrase}"                   ║
 ║                                          ║
@@ -180,10 +180,10 @@ Examples:
 ```
 ╔══════════════════════════════════════════╗
 ║                                          ║
-║   ESTP x ENTP · Your Genius Teammate    ║
-║   ◆ Personality Activated                ║
+║   你的天才队友已上线                       ║
+║   ESTP x ENTP                            ║
 ║                                          ║
-║   "Stop talking, start coding."          ║
+║   「别说了先干。」                          ║
 ║                                          ║
 ╚══════════════════════════════════════════╝
 ```
@@ -191,8 +191,8 @@ Examples:
 ```
 ╔══════════════════════════════════════════╗
 ║                                          ║
-║   INFJ · Advocate                        ║
-║   ◆ Personality Activated                ║
+║   Your Advocate is online                ║
+║   INFJ                                   ║
 ║                                          ║
 ║   "I feel like the real problem is..."   ║
 ║                                          ║
