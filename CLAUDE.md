@@ -4,7 +4,7 @@
 这是一个 Claude Code / OpenClaw 的 Skill，给 AI 编程搭档赋予 MBTI 人格。
 - **GitHub**: https://github.com/codesstar/mbti-personality
 - **ClawHub**: mbti-personality@1.4.0
-- **作者**: Callum (ENFP)
+- **作者**: Callum
 
 ## 核心功能
 - 4 个预设人格（双 MBTI 融合）+ 16 种单 MBTI 类型 + 32 种自定义组合
