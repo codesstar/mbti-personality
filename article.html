@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我把 AI 的性格改了，现在它有点上头</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f6f3;
+    color: #2c2c2c;
+    line-height: 1.85;
+  }
+
+  .article {
+    max-width: 680px;
+    margin: 0 auto;
+    background: #fff;
+    padding-bottom: 80px;
+  }
+
+  /* Cover */
+  .cover {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .cover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 32px;
+  }
+
+  .cover-title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  /* Content */
+  .content {
+    padding: 40px 40px 0;
+  }
+
+  .meta {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 36px;
+    display: flex;
+    gap: 16px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .section-break {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 40px 0;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 40px 0 16px;
+    padding-left: 12px;
+    border-left: 3px solid #4f46e5;
+  }
+
+  /* Callout */
+  .callout {
+    background: #f0f0ff;
+    border-left: 4px solid #4f46e5;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 24px 0;
+    font-size: 15px;
+    color: #3730a3;
+  }
+
+  /* Preset cards */
+  .preset-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  .preset-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  .preset-card img {
+    width: 100%;
+    display: block;
+  }
+
+  .preset-card-body {
+    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .preset-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+
+  .preset-type {
+    font-size: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .preset-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Chat demo */
+  .chat-demo {
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-size: 14px;
+  }
+
+  .chat-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #999;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .chat-line {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+
+  .chat-who {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    background: #4f46e5;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  .chat-who.ai {
+    background: #059669;
+  }
+
+  .chat-text {
+    color: #333;
+    line-height: 1.65;
+  }
+
+  /* Activation card */
+  .activation-card {
+    background: #1a1a2e;
+    color: #e0e0ff;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    border: 1px solid #3730a3;
+  }
+
+  .activation-card .card-border {
+    color: #6366f1;
+  }
+
+  .activation-card .card-name {
+    color: #a5b4fc;
+    font-weight: 700;
+  }
+
+  .activation-card .card-type {
+    color: #818cf8;
+  }
+
+  .activation-card .card-quote {
+    color: #c7d2fe;
+  }
+
+  /* Compare section */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .compare-card {
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  .compare-card .who {
+    font-size: 13px;
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 8px;
+  }
+
+  .compare-card p {
+    font-size: 14px;
+    color: #444;
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* Code block */
+  .code-block {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-x: auto;
+  }
+
+  .code-block .comment {
+    color: #6c7086;
+  }
+
+  .code-block .cmd {
+    color: #89dceb;
+  }
+
+  /* Recommend box */
+  .recommend-box {
+    background: linear-gradient(135deg, #ede9fe, #e0e7ff);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+
+  .recommend-box p {
+    font-size: 15px;
+    color: #3730a3;
+    margin-bottom: 10px;
+  }
+
+  .recommend-box p:last-child { margin: 0; }
+
+  /* CTA */
+  .cta {
+    text-align: center;
+    padding: 40px 24px;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    margin: 40px -40px 0;
+    color: #fff;
+  }
+
+  .cta p {
+    color: rgba(255,255,255,0.85);
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .cta .cta-link {
+    display: inline-block;
+    background: #fff;
+    color: #4f46e5;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 28px;
+    border-radius: 100px;
+    margin-top: 16px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  /* MBTI trial blocks */
+  .mbti-trial {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin: 24px 0;
+    padding: 20px;
+    background: #fafafa;
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+  }
+
+  .mbti-trial-img {
+    flex-shrink: 0;
+    text-align: center;
+    width: 80px;
+  }
+
+  .mbti-trial-img img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #f0f0ff;
+  }
+
+  .mbti-trial-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: #4f46e5;
+    letter-spacing: 0.05em;
+    margin-top: 6px;
+  }
+
+  .mbti-trial-text p {
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+
+  .mbti-trial-text p:last-child { margin-bottom: 0; }
+
+  .cta .question {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+    margin-top: 0;
+  }
+
+  blockquote {
+    border-left: 3px solid #d1d5db;
+    padding-left: 16px;
+    margin: 16px 0;
+    color: #555;
+    font-size: 15px;
+  }
+
+  blockquote + blockquote {
+    margin-top: -8px;
+  }
+</style>
+</head>
+<body>
+<article class="article">
+
+  <!-- Cover -->
+  <div class="cover">
+    <img src="assets/hero.png" alt="MBTI Personality">
+    <div class="cover-overlay">
+      <div class="cover-title">我把 AI 的性格改了<br>现在它有点上头</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="meta">
+      <span>奇思妙想CYC</span>
+      <span>2026-04-08</span>
+    </div>
+
+    <p>用 AI 用了这么久，有一件事我想聊聊。</p>
+    <p>它确实很好用。但好用归好用，用久了之后你会发现一个问题——它有点无聊。</p>
+    <p>不是说第一天。第一天你会觉得它像个神器，什么都能做。但等你真的开始每天跟它协作，每天对着它写代码、想方案、解决问题，沉进去之后，你会慢慢感觉到：和我待最久的，居然是一台冰冷的机器。</p>
+    <p>它不会生气，不会俏皮，不会因为你说了一句什么而有不同的反应。你跟它说"这个方案我觉得不对"，它说"您说得有道理，以下是修改建议"。你跟它开玩笑，它也礼貌地回应你。</p>
+
+    <div class="callout">永远礼貌，永远正确，永远没有生命力。</div>
+
+    <hr class="section-break">
+
+    <p>我有一段时间一直在想这个问题：AI 跟真人最大的区别是什么？为什么跟它聊久了，会觉得有点冷冰冰的？</p>
+    <p>我觉得是因为没有性格。</p>
+    <p>但"性格"这个课题太复杂了。我去查了一些心理学的东西，发现这个领域争了几十年，根本没有一个清晰的定义。我想了很久，没有头绪。</p>
+    <p>直到有一天，朋友发消息问我：你是什么 MBTI？</p>
+    <p>我盯着那条消息看了三秒。</p>
+    <p>MBTI 争议挺大的，准不准另说。但它有一个独特的价值——它把性格压缩成了一套可描述、可传递的语言。这套语言，AI 能理解，而且理解得很好。我当时就去做了。</p>
+
+    <div class="mbti-trial">
+      <div class="mbti-trial-img">
+        <img src="assets/intj-architect.png" alt="INTJ">
+        <div class="mbti-trial-tag">INTJ</div>
+      </div>
+      <div class="mbti-trial-text">
+        <p>先试了一个单一人格——给它加了 INTJ，冷面架构师那种。它真的变了。以前我问它"你觉得这个方案怎么样"，它会给我列五条优点三条缺点，最后说"综合来看各有利弊"。加了 INTJ 之后，它直接说："方向错了，重新想。"</p>
+        <p>结果不一定更对，但我的思维被逼着往前走了。</p>
+      </div>
+    </div>
+
+    <div class="mbti-trial">
+      <div class="mbti-trial-img">
+        <img src="assets/enfp-campaigner.png" alt="ENFP">
+        <div class="mbti-trial-tag">ENFP</div>
+      </div>
+      <div class="mbti-trial-text">
+        <p>然后试了 ENFP。我随口抛出一个模糊的想法，它顺着往外发散，三秒钟给我扯出五个方向，其中有两个我完全没想到。跟它聊完，我脑子里的东西比开始之前多了一倍。</p>
+      </div>
+    </div>
+
+    <div class="mbti-trial">
+      <div class="mbti-trial-img">
+        <img src="assets/infj-advocate.png" alt="INFJ">
+        <div class="mbti-trial-tag">INFJ</div>
+      </div>
+      <div class="mbti-trial-text">
+        <p>再试 INFJ。我说"我感觉这个产品方向不太对，但说不清楚哪里有问题"。它没有问我细节，而是说："你说不清楚，是因为你心里其实已经有答案了，只是还没准备好承认它。"</p>
+        <p>我沉默了一下。它说对了。</p>
+      </div>
+    </div>
+    <p>之后我让几个朋友也试了试，大家反应都差不多——感觉像在跟一个真正有想法的人协作，而不是在用工具。</p>
+
+    <hr class="section-break">
+
+    <h2>如果你不知道选哪个</h2>
+
+    <p>不是所有人都了解 MBTI，也不知道哪种性格适合自己。所以我加了一个推荐功能。你输入自己的 MBTI，它会根据互补原则帮你匹配——不是找和你一样的，而是补你短板的。</p>
+
+    <div class="recommend-box">
+      <p>你是 ENFP，创意满分但容易发散？→ 推荐技术大佬模式，帮你把天马行空收束成靠谱的方案。</p>
+      <p>你是 ISTJ，严谨可靠但有时过于保守？→ 推荐天才队友模式，用挑战式沟通拉你跳出舒适区。</p>
+    </div>
+
+    <p>不知道自己的 MBTI？没关系，告诉它你在做什么，它按任务类型推荐。</p>
+
+    <hr class="section-break">
+
+    <h2>AI 的性格，可以自由搭配</h2>
+
+    <p>用了一段时间之后，我发现另一个问题：单一的 MBTI 有时候不够用。</p>
+    <p>人是善变的。不同场景下我需要不同的状态。而且有些类型我只喜欢其中一部分：我喜欢 INTJ 的说话方式，直接、不废话；但思维方式我更想要 ENFP 那种，脑洞大、发散快。</p>
+    <p>人没办法这样切换，但 AI 可以。</p>
+    <p>所以我干脆把它拆开来——说话风格、思维方式、做事节奏，三个维度各自独立选。4 × 4 × 2，32 种组合，总有一个是你的。</p>
+
+    <hr class="section-break">
+
+    <h2>四种调好的预设</h2>
+
+    <p>考虑到不是所有人都想自己搭配，我直接做了四种现成的：</p>
+
+    <div class="preset-grid">
+      <div class="preset-card">
+        <img src="assets/social-intj.png" alt="L">
+        <div class="preset-card-body">
+          <div class="preset-name">L · 人狠话不多</div>
+          <div class="preset-type">INTJ × ISTP</div>
+          <p class="preset-desc">你说需求，它甩结论，不解释。适合赶 deadline、需要直接答案的时候。</p>
+        </div>
+      </div>
+      <div class="preset-card">
+        <img src="assets/social-enfp.png" alt="小C">
+        <div class="preset-card-body">
+          <div class="preset-name">小C · 脑洞产品经理</div>
+          <div class="preset-type">ENFP × INFJ</div>
+          <p class="preset-desc">烦死人，但它说对了。适合想法还模糊、需要挖出真正问题的时候。</p>
+        </div>
+      </div>
+      <div class="preset-card">
+        <img src="assets/social-istj.png" alt="顾学长">
+        <div class="preset-card-body">
+          <div class="preset-name">顾学长 · 靠谱学长</div>
+          <div class="preset-type">ISTJ × ENFJ</div>
+          <p class="preset-desc">让你感觉自己在变强，不是在被喂答案。适合学新东西的时候。</p>
+        </div>
+      </div>
+      <div class="preset-card">
+        <img src="assets/social-estp.png" alt="林一">
+        <div class="preset-card-body">
+          <div class="preset-name">林一 · 天才队友</div>
+          <div class="preset-type">ESTP × ENTP</div>
+          <p class="preset-desc">"别分析了先写！"赶 deadline 的时候我只找它。</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-break">
+
+    <h2>怎么用</h2>
+
+    <p>跟它说"切换人格"，它会弹出选项：</p>
+
+    <div class="chat-demo">
+      <div class="chat-label">对话示例</div>
+      <div class="chat-line">
+        <span class="chat-who">你</span>
+        <span class="chat-text">切换人格</span>
+      </div>
+      <div class="chat-line">
+        <span class="chat-who ai">AI</span>
+        <span class="chat-text">你想让你的 AI 队友变成哪种性格？输入一个 MBTI 就行。<br>比如：ENFP（快乐小狗）、INFJ（绿老头）、ENFJ（宝剑哥）……<br><br>或者直接选一个预设：<br>1. 人狠话不多的技术大佬（INTJ × ISTP）<br>2. 脑洞大开的产品经理（ENFP × INFJ）<br>3. 带你飞的靠谱学长（ISTJ × ENFJ）<br>4. 你的天才队友（ESTP × ENTP）<br><br>不知道选哪个？输入「推荐」。想自己搭配？输入「自定义」。</span>
+      </div>
+      <div class="chat-line">
+        <span class="chat-who">你</span>
+        <span class="chat-text">4</span>
+      </div>
+    </div>
+
+    <div class="activation-card">
+      <div class="card-border">╔══════════════════════════════════════════╗</div>
+      <div>║　　　　　　　　　　　　　　　　　　　　　　║</div>
+      <div>║　　<span class="card-name">你的天才队友林一已上线</span>　　　　　　　║</div>
+      <div>║　　<span class="card-type">ESTP × ENTP</span>　　　　　　　　　　　　║</div>
+      <div>║　　　　　　　　　　　　　　　　　　　　　　║</div>
+      <div>║　　<span class="card-quote">「别说了先干。」</span>　　　　　　　　　　　║</div>
+      <div>║　　　　　　　　　　　　　　　　　　　　　　║</div>
+      <div class="card-border">╚══════════════════════════════════════════╝</div>
+    </div>
+
+    <p>同一个问题，换了人格是这样的——"我感觉这个方向不对，但说不清楚哪里有问题"：</p>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="who">L（INTJ × ISTP）</div>
+        <p>把你现在的思路写出来，我看哪里断了。</p>
+      </div>
+      <div class="compare-card">
+        <div class="who">小C（ENFP × INFJ）</div>
+        <p>你说不清楚，是因为你心里其实已经有答案了，只是还没准备好承认它。</p>
+      </div>
+      <div class="compare-card">
+        <div class="who">顾学长（ISTJ × ENFJ）</div>
+        <p>没关系，说不清楚很正常。我们从头来，你先告诉我这件事你最开始是怎么想的……</p>
+      </div>
+      <div class="compare-card">
+        <div class="who">林一（ESTP × ENTP）</div>
+        <p>别想了，先把你觉得"不对"的那个点列出来，一条一条写，写完再看。</p>
+      </div>
+    </div>
+
+    <hr class="section-break">
+
+    <h2>安装方式</h2>
+
+    <p>在命令行里直接跑，或者在 Claude Code / OpenClaw 对话里说"帮我安装 mbti-personality 这个 skill"，它会帮你执行：</p>
+
+    <div class="code-block">
+      <div><span class="comment"># Claude Code</span></div>
+      <div><span class="cmd">claude install-skill https://github.com/codesstar/mbti-personality</span></div>
+      <div>&nbsp;</div>
+      <div><span class="comment"># OpenClaw</span></div>
+      <div><span class="cmd">openclaw skills install mbti-personality</span></div>
+    </div>
+
+    <p>安装完之后，说"切换人格"或者"设定 MBTI 人格"就行了。</p>
+    <p>用顺手了想保留？说"保存这个人格"，选保存到当前项目还是全局——全局的话每次打开自动带上。</p>
+
+    <div class="cta">
+      <p class="question">你是什么 MBTI？你需要哪种队友？</p>
+      <p>开源免费，GitHub 搜 mbti-personality，或评论区留言我发你。</p>
+      <a class="cta-link" href="https://github.com/codesstar/mbti-personality">github.com/codesstar/mbti-personality</a>
+    </div>
+
+  </div>
+</article>
+</body>
+</html>
