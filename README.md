@@ -43,6 +43,11 @@ claude install-skill https://github.com/codesstar/mbti-personality
 
 # OpenClaw
 openclaw skills install mbti-personality
+
+# Hermes Agent
+hermes skills install https://github.com/codesstar/mbti-personality
+# Or install from a local clone:
+#   git clone https://github.com/codesstar/mbti-personality ~/.hermes/skills/mbti-personality
 ```
 
 **Use:**
@@ -283,7 +288,10 @@ You: current personality       → Shows what's active
 
 Supports **project-level** or **global** saving. Default is session-only — save when you're ready.
 
-Auto-detects your environment: writes to `CLAUDE.md` (Claude Code) or `SOUL.md` (OpenClaw).
+Auto-detects your environment and writes to the right file:
+- **Claude Code** → `./CLAUDE.md` (project) or `~/.claude/CLAUDE.md` (global)
+- **OpenClaw** → `./SOUL.md` (project) or `~/.openclaw/soul.md` (global)
+- **Hermes Agent** → `./AGENTS.md` (project, falls back to `./CLAUDE.md`) or `~/.hermes/SOUL.md` (global)
 
 ---
 

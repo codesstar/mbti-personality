@@ -43,6 +43,11 @@ claude install-skill https://github.com/codesstar/mbti-personality
 
 # OpenClaw
 openclaw skills install mbti-personality
+
+# Hermes Agent
+hermes skills install https://github.com/codesstar/mbti-personality
+# 或从本地克隆安装：
+#   git clone https://github.com/codesstar/mbti-personality ~/.hermes/skills/mbti-personality
 ```
 
 **使用：**
@@ -283,7 +288,10 @@ openclaw skills install mbti-personality
 
 支持按**项目**或**全局**保存。默认仅当前对话生效，想保留时再说。
 
-自动检测环境：Claude Code 写入 `CLAUDE.md`，OpenClaw 写入 `SOUL.md`。
+自动检测环境，写入对应文件：
+- **Claude Code** → `./CLAUDE.md`（项目）或 `~/.claude/CLAUDE.md`（全局）
+- **OpenClaw** → `./SOUL.md`（项目）或 `~/.openclaw/soul.md`（全局）
+- **Hermes Agent** → `./AGENTS.md`（项目，不存在则回落 `./CLAUDE.md`）或 `~/.hermes/SOUL.md`（全局）
 
 ---
 

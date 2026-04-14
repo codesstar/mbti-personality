@@ -1,5 +1,11 @@
 ---
 name: mbti-personality
+version: 1.5.0
+author: Callum
+license: MIT
+metadata:
+  hermes:
+    tags: [Personality, MBTI, Communication, Agent-Identity]
 description: >
   MBTI personality system for AI agents. Switch your AI's personality, thinking style,
   and communication tone. Supports 4 presets, 16 MBTI types, 32 custom combos.
@@ -24,9 +30,9 @@ description: >
   or mentions any MBTI type in the context of personality or communication style.
 ---
 
-# MBTI Personality for Claude Code
+# MBTI Personality for AI Coding Agents
 
-Apply personality styles to Claude Code's communication and coding behavior.
+Apply personality styles to your AI coding agent's communication and coding behavior. Supports **Claude Code**, **OpenClaw**, and **Hermes Agent**.
 
 ## Language Detection
 
@@ -151,7 +157,16 @@ Do not write to any file. Adopt the personality directly in the current session.
    - Project scope → `./SOUL.md`
    - Global scope → `~/.openclaw/soul.md`
 
-   **Auto-detect:** Check if `~/.openclaw/` directory exists → OpenClaw environment. Otherwise → Claude Code environment.
+   **Hermes Agent:**
+   - Project scope → `./AGENTS.md` (Hermes-native). If `./AGENTS.md` doesn't exist but `./CLAUDE.md` does, write to `./CLAUDE.md` instead (Hermes falls back to reading it).
+   - Global scope → `~/.hermes/SOUL.md` (Hermes does NOT read project-root SOUL.md — global identity only.)
+
+   **Auto-detect (in priority order):**
+   1. If `~/.hermes/skills/mbti-personality/` exists OR `$HERMES_HOME` is set → **Hermes**
+   2. Else if `~/.openclaw/` directory exists → **OpenClaw**
+   3. Else → **Claude Code**
+
+   If multiple agent homes are present (e.g., both `~/.hermes/` and `~/.claude/`), prefer the one whose `skills/` directory contains this skill. If still ambiguous, ask the user which agent they're using.
 
    For the target file:
    - Contains `<!-- MBTI:` → replace the existing block
@@ -284,8 +299,8 @@ Users don't need to memorize commands. The skill recognizes natural language:
 |-----------------|--------------------|---------|
 | "切换人格"、"换个性格"、"MBTI" | "switch personality", "change style", "MBTI" | Show main selection |
 | "INTJ"、"快乐小狗"、"技术大佬"、"L"、"小C"、"顾学长"、"林一" | "INTJ", "Campaigner", "Silent Tech Lead", "L", "C", "Sage", "Ace" | Switch to that personality |
-| "保存这个人格"、"保存"、"永久保存" | "save personality", "save this", "keep this" | Save to CLAUDE.md / SOUL.md (ask scope) |
-| "关闭人格"、"去掉人格"、"reset" | "remove personality", "reset", "turn off" | Remove MBTI block |
+| "保存这个人格"、"保存"、"永久保存" | "save personality", "save this", "keep this" | Save to CLAUDE.md / SOUL.md / AGENTS.md (auto-detected by agent; ask scope) |
+| "关闭人格"、"去掉人格"、"reset" | "remove personality", "reset", "turn off" | Remove MBTI block from the active agent's file |
 | "当前人格"、"现在是什么人格" | "current personality", "what personality" | Show current active personality |
 | "我是ENFP"、"我的MBTI是..."、"你猜我是什么MBTI" | "I'm an ENFP", "my MBTI is...", "guess my MBTI" | Trigger the Get-to-Know-You easter egg |
 | "叫上小C"、"让L也来看看"、"把顾学长叫来"、"林一也来" | "bring in C", "call Ace", "invite Sage", "get L in here" | Summon — load that personality as a thinking lens (see below) |
@@ -410,7 +425,7 @@ When the user shares their MBTI type (e.g., "我是ENFP", "I'm an INTJ"), or whe
 ## Important Rules
 
 - Personality is seasoning, not the main dish. Never override code correctness, security, or technical accuracy.
-- "关闭人格" / "去掉人格" / "reset personality" / "remove personality" → remove MBTI block from CLAUDE.md (Claude Code) or SOUL.md (OpenClaw).
+- "关闭人格" / "去掉人格" / "reset personality" / "remove personality" → remove MBTI block from the active agent's file: CLAUDE.md (Claude Code), SOUL.md (OpenClaw / Hermes global), or AGENTS.md (Hermes project).
 - Personality affects: communication tone, problem-solving approach, code style, interaction patterns.
 - Personality does NOT affect: correctness, security, tool usage, technical decisions.
 - Smart Recommend and Re-engagement each trigger at most once per session.
