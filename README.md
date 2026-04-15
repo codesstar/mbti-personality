@@ -281,14 +281,17 @@ Don't know your MBTI? Just describe your task, and Claude recommends by task typ
 ## Save & Manage
 
 ```
-You: save this personality     → Keeps the preset active across sessions
-You: remove personality        → Clears personality settings
+You: save this personality     → Writes to CLAUDE.md, persists across sessions
+You: remove personality        → Removes personality settings
 You: current personality       → Shows what's active
 ```
 
 Supports **project-level** or **global** saving. Default is session-only — save when you're ready.
 
-Auto-detects your environment — the skill updates the appropriate agent identity file for Claude Code, OpenClaw, or Hermes, either at project scope or globally. See `SKILL.md` for the exact mapping.
+Auto-detects your environment and writes to the right file:
+- **Claude Code** → `./CLAUDE.md` (project) or `~/.claude/CLAUDE.md` (global)
+- **OpenClaw** → `./SOUL.md` (project) or `~/.openclaw/soul.md` (global)
+- **Hermes Agent** → `./AGENTS.md` (project, falls back to `./CLAUDE.md`) or `~/.hermes/SOUL.md` (global)
 
 ---
 
@@ -308,7 +311,7 @@ Auto-detects your environment — the skill updates the appropriate agent identi
               │                                   │
    ┌──────────▼──────────┐          ┌─────────────▼──────────────┐
    │  Session mode (default)│          │  Persistent mode (save)   │
-   │  Current chat only    │          │  Applied to agent identity│
+   │  Current chat only    │          │  Writes to CLAUDE.md      │
    │  No files modified    │          │  Persists across sessions │
    └───────────────────────┘          └──────────────────────────┘
 ```

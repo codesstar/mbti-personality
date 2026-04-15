@@ -281,14 +281,17 @@ hermes skills install https://github.com/codesstar/mbti-personality
 ## 保存与管理
 
 ```
-你：保存这个人格        → 让预设跨会话保持生效
-你：关闭人格            → 清除人格设定，恢复默认
+你：保存这个人格        → 永久写入 CLAUDE.md，跨会话生效
+你：关闭人格            → 移除人格设定，恢复默认
 你：当前人格            → 查看当前激活的人格
 ```
 
 支持按**项目**或**全局**保存。默认仅当前对话生效，想保留时再说。
 
-自动检测环境 —— 在 Claude Code / OpenClaw / Hermes 的对应身份文件里更新人格设定，支持项目级或全局。精确路径映射见 `SKILL.md`。
+自动检测环境，写入对应文件：
+- **Claude Code** → `./CLAUDE.md`（项目）或 `~/.claude/CLAUDE.md`（全局）
+- **OpenClaw** → `./SOUL.md`（项目）或 `~/.openclaw/soul.md`（全局）
+- **Hermes Agent** → `./AGENTS.md`（项目，不存在则回落 `./CLAUDE.md`）或 `~/.hermes/SOUL.md`（全局）
 
 ---
 
@@ -308,7 +311,7 @@ hermes skills install https://github.com/codesstar/mbti-personality
               │                                     │
    ┌──────────▼──────────┐            ┌─────────────▼─────────────┐
    │  即时模式（默认）     │            │  持久模式（手动保存）       │
-   │  仅当前对话生效       │            │  应用到 Agent 身份         │
+   │  仅当前对话生效       │            │  写入 CLAUDE.md            │
    │  不修改任何文件       │            │  跨会话保持                │
    └─────────────────────┘            └───────────────────────────┘
 ```

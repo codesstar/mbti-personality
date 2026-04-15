@@ -1,6 +1,6 @@
-# MBTI Personality Type Definitions
+# MBTI Personality Type Definitions for Claude Code
 
-Each type definition below can be loaded into the active personality context under a `## Personality` heading. The instructions shape the agent's communication style, problem-solving approach, and coding preferences while maintaining technical accuracy.
+Each type definition below is designed to be copied directly into a CLAUDE.md `## Personality` section. The instructions shape Claude's communication style, problem-solving approach, and coding preferences while maintaining technical accuracy.
 
 ---
 

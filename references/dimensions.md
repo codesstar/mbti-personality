@@ -112,4 +112,4 @@ Adopt the custom personality ({Dim1 label} + {Dim2 label} + {Dim3 label}):
 Code style: Derive from the combination — thinking style influences architecture decisions, communication style influences comments and documentation, work rhythm influences delivery approach.
 ```
 
-Apply the personality block with tag: `<!-- MBTI: CUSTOM({1A}+{2C}+{3B}) -->`
+Write to CLAUDE.md with tag: `<!-- MBTI: CUSTOM({1A}+{2C}+{3B}) -->`
