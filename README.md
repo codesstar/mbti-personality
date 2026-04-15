@@ -44,14 +44,11 @@ claude install-skill https://github.com/codesstar/mbti-personality
 # OpenClaw
 openclaw skills install mbti-personality
 
-# Hermes Agent
-hermes skills install --force https://github.com/codesstar/mbti-personality
-# --force is required: Hermes flags any skill that writes to user files
-# (e.g. ~/.hermes/SOUL.md) as CRITICAL persistence. This is expected for
-# a personality skill — passing --force acknowledges it's intentional.
-#
-# Or install from a local clone:
-#   git clone https://github.com/codesstar/mbti-personality ~/.hermes/skills/mbti-personality
+# Hermes Agent — clone directly (recommended, always gets the latest)
+git clone https://github.com/codesstar/mbti-personality ~/.hermes/skills/mbti-personality
+
+# Alternative: hermes skills install (may serve an older ClawHub-mirrored version)
+# hermes skills install --force https://github.com/codesstar/mbti-personality
 ```
 
 **Use:**

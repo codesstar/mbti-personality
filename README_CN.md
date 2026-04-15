@@ -44,13 +44,11 @@ claude install-skill https://github.com/codesstar/mbti-personality
 # OpenClaw
 openclaw skills install mbti-personality
 
-# Hermes Agent
-hermes skills install --force https://github.com/codesstar/mbti-personality
-# 必须加 --force：Hermes 会把"写用户家目录"的 skill（会更新 ~/.hermes/SOUL.md）
-# 标为 CRITICAL persistence，这是人格 skill 的正常行为，用 --force 确认即可。
-#
-# 或从本地克隆安装：
-#   git clone https://github.com/codesstar/mbti-personality ~/.hermes/skills/mbti-personality
+# Hermes Agent —— 推荐用 git clone（始终拿到最新版）
+git clone https://github.com/codesstar/mbti-personality ~/.hermes/skills/mbti-personality
+
+# 备选：hermes skills install（可能会拿到 ClawHub 镜像的旧版）
+# hermes skills install --force https://github.com/codesstar/mbti-personality
 ```
 
 **使用：**
